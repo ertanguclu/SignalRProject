@@ -10,7 +10,8 @@ namespace SignalR.DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=ERTAN; initial Catalog=SignalRDb; integrated security=true;");
+            optionsBuilder.UseSqlServer("Server=ERTAN; initial Catalog=SignalRDb; integrated security=true;TrustServerCertificate=True;");
+
         }
 
         public DbSet<About> Abouts { get; set; }
