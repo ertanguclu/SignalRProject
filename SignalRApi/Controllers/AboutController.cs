@@ -31,7 +31,7 @@ namespace SignalRApi.Controllers
                 ImageUrl = createAboutDto.ImageUrl
             };
             _aboutService.TAdd(about);
-            return Ok("HAkkında Kısmı Başarılı Bir Şekilde Eklendi.");
+            return Ok("Hakkında Kısmı Başarılı Bir Şekilde Eklendi.");
         }
         [HttpDelete]
         public IActionResult DeleteAbout(int id)

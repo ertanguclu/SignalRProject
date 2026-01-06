@@ -1,10 +1,18 @@
 using Microsoft.OpenApi;
+using SignalR.BusinessLayer.Abstract;
+using SignalR.BusinessLayer.Concrete;
+using SignalR.DataAccessLayer.Abstract;
 using SignalR.DataAccessLayer.Concrete;
+using SignalR.DataAccessLayer.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddDbContext<SignalRContext>();
+builder.Services.AddScoped<IAboutService, AboutManager>();
+builder.Services.AddScoped<IAboutDal, EfAboutDal>();
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -13,8 +21,6 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1"
     });
 });
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
