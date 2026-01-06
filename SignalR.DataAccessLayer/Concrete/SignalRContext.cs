@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SignalR.EntityLayer.Entities
+namespace SignalR.DataAccessLayer.Concrete
 {
-    internal class Class1
+    public class SignalRContext
     {
     }
 }
