@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BusinessLayer.Abstract;
 using SignalR.DtoLayer.BookingDto;
+using SignalR.DtoLayer.CategoryDto;
 using SignalR.EntityLayer.Entities;
 
 namespace SignalRApi.Controllers
@@ -11,29 +13,24 @@ namespace SignalRApi.Controllers
     public class BookingController : ControllerBase
     {
         private readonly IBookingService _bookingService;
+        private readonly IMapper _mapper;
 
-        public BookingController(IBookingService bookingService)
+        public BookingController(IBookingService bookingService, IMapper mapper)
         {
             _bookingService = bookingService;
+            _mapper = mapper;
         }
         [HttpGet]
         public IActionResult BookingList()
         {
-            var bookings = _bookingService.TGetListAll();
-            return Ok(bookings);
+            var values = _mapper.Map<List<ResultBookingDto>>(_bookingService.TGetListAll());
+            return Ok(values);
         }
         [HttpPost]
-        public IActionResult AddBooking(CreateBookingDto createBookingDto)
+        public IActionResult CreateBooking(CreateBookingDto createBookingDto)
         {
-            Booking booking = new Booking()
-            {
-                Name = createBookingDto.Name,
-                Phone = createBookingDto.Phone,
-                Mail = createBookingDto.Mail,
-                PersonCount = createBookingDto.PersonCount,
-                Date = createBookingDto.Date
-            };
-            _bookingService.TAdd(booking);
+            var value = _mapper.Map<Booking>(createBookingDto);
+            _bookingService.TAdd(value);
             return Ok("Rezervasyon Yapıldı.");
         }
         [HttpDelete]
@@ -46,22 +43,14 @@ namespace SignalRApi.Controllers
         [HttpPut]
         public IActionResult UpdateBooking(UpdateBookingDto updateBookingDto)
         {
-            Booking booking = new Booking()
-            {
-                BookingID = updateBookingDto.BookingID,
-                Name = updateBookingDto.Name,
-                Phone = updateBookingDto.Phone,
-                Mail = updateBookingDto.Mail,
-                PersonCount = updateBookingDto.PersonCount,
-                Date = updateBookingDto.Date
-            };
-            _bookingService.TUpdate(booking);
+            var value = _mapper.Map<Booking>(updateBookingDto);
+            _bookingService.TUpdate(value);
             return Ok("Rezervasyon Güncellendi.");
         }
         [HttpGet("GetBooking")]
         public IActionResult GetBooking(int id)
         {
-            var value = _bookingService.TGetById(id);
+            var value = _mapper.Map<ResultBookingDto>(_bookingService.TGetById(id));
             return Ok(value);
 
         }

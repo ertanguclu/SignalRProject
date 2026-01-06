@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SignalR.DtoLayer.CategoryDto
 {
-    public class ResultCategortDto
+    public class ResultCategoryDto
     {
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
