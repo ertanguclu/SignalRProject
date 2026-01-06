@@ -42,7 +42,7 @@ namespace SignalRApi.Controllers
         [HttpGet("GetCategory")]
         public IActionResult GetCategory(int id)
         {
-            var value = _mapper.Map<ResultCategoryDto>(_categoryService.TGetById(id));
+            var value = _mapper.Map<GetCategoryDto>(_categoryService.TGetById(id));
             return Ok(value);
         }
         [HttpPut]

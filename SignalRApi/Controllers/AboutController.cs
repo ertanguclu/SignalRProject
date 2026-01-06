@@ -48,7 +48,7 @@ namespace SignalRApi.Controllers
         [HttpGet("GetAbout")]
         public IActionResult GetAbout(int id)
         {
-            var value = _mapper.Map<ResultAboutDto>(_aboutService.TGetById(id));
+            var value = _mapper.Map<GetAboutDto>(_aboutService.TGetById(id));
             return Ok(value);
         }
     }

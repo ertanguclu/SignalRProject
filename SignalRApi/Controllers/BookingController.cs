@@ -50,7 +50,7 @@ namespace SignalRApi.Controllers
         [HttpGet("GetBooking")]
         public IActionResult GetBooking(int id)
         {
-            var value = _mapper.Map<ResultBookingDto>(_bookingService.TGetById(id));
+            var value = _mapper.Map<GetBookingDto>(_bookingService.TGetById(id));
             return Ok(value);
 
         }
