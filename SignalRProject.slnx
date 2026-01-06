@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SignalR.EntityLayer/SignalR.EntityLayer.csproj" />
+  <Project Path="SignalRApi/SignalRApi.csproj" />
+  <Project Path="SignalRWebUI/SignalRWebUI.csproj" />
+</Solution>
