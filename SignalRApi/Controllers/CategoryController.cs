@@ -39,7 +39,7 @@ namespace SignalRApi.Controllers
             _categoryService.TDelete(value);
             return Ok("Kategori Silindi.");
         }
-        [HttpGet("GetCategory")]
+        [HttpGet("{id}")]
         public IActionResult GetCategory(int id)
         {
             var value = _mapper.Map<GetCategoryDto>(_categoryService.TGetById(id));
