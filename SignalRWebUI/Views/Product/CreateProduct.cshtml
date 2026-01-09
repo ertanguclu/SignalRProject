@@ -28,14 +28,14 @@
 						</div>
 						<div class="card-body">
 							<div class="form-group">
-								<label for="productimage">Ürün Görselini Giriniz</label>
-								<input type="text" class="form-control" asp-for="ImageUrl" id="productimage">
+								<label for="imageurl">Ürün Görselini Giriniz</label>
+								<input type="text" class="form-control" asp-for="ImageUrl" id="imageurl">
 							</div>
 						</div>
 						<div class="card-body">
 							<div class="form-group">
 								<label for="productstatus">Ürün Kategorisini Seçiniz</label>
-								<input type="text" class="form-control" asp-for="ProductStatus" id="productstatus">
+                                @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control"})
 							</div>
 						</div>
 						<div class="card-body">
