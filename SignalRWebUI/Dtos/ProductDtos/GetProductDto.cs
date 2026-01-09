@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SignalR.DtoLayer.ProductDto
+﻿namespace SignalRWebUI.Dtos.ProductDtos
 {
     public class GetProductDto
     {
