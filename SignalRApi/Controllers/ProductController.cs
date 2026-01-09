@@ -54,7 +54,7 @@ namespace SignalRApi.Controllers
             _productService.TUpdate(value);
             return Ok("Ürün Bilgisi Güncellendi.");
         }
-        [HttpGet("GetProduct")]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var value = _mapper.Map<GetProductDto>(_productService.TGetById(id));
