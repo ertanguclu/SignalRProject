@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SignalR.DtoLayer.ContactDto
+namespace SignalRWebUI.Dtos.ContactDtos
 {
     public class UpdateContactDto
     {
