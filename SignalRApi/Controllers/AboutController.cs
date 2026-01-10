@@ -31,7 +31,7 @@ namespace SignalRApi.Controllers
             _aboutService.TAdd(value);
             return Ok("Hakkında Kısmı Başarılı Bir Şekilde Eklendi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteAbout(int id)
         {
             var values = _aboutService.TGetById(id);
@@ -45,7 +45,7 @@ namespace SignalRApi.Controllers
             _aboutService.TUpdate(value);
             return Ok("Hakkında Kısmı Başarılı Bir Şekilde Güncellendi.");
         }
-        [HttpGet("GetAbout")]
+        [HttpGet("{id}")]
         public IActionResult GetAbout(int id)
         {
             var value = _mapper.Map<GetAboutDto>(_aboutService.TGetById(id));
