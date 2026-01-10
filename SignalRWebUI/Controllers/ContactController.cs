@@ -71,7 +71,7 @@ namespace SignalRWebUI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateAbout(UpdateContactDto updateContactDto)
+        public async Task<IActionResult> UpdateContact(UpdateContactDto updateContactDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateContactDto);
