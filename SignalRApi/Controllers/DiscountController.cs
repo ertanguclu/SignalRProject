@@ -26,7 +26,7 @@ namespace SignalRApi.Controllers
             return Ok(values);
         }
 
-        [HttpGet("GetDiscount")]
+        [HttpGet("{id}")]
         public IActionResult GetDiscount(int id)
         {
             var value = _mapper.Map<GetDiscountDto>(_discountService.TGetById(id));
@@ -39,7 +39,7 @@ namespace SignalRApi.Controllers
             _discountService.TAdd(value);
             return Ok("İndirim Başarılı Bir Şekilde Eklendi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteDiscount(int id)
         {
             var values = _discountService.TGetById(id);
