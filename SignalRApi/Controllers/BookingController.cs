@@ -33,7 +33,7 @@ namespace SignalRApi.Controllers
             _bookingService.TAdd(value);
             return Ok("Rezervasyon Yapıldı.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteBooking(int id)
         {
             var value = _bookingService.TGetById(id);
@@ -47,7 +47,7 @@ namespace SignalRApi.Controllers
             _bookingService.TUpdate(value);
             return Ok("Rezervasyon Güncellendi.");
         }
-        [HttpGet("GetBooking")]
+        [HttpGet("{id}")]
         public IActionResult GetBooking(int id)
         {
             var value = _mapper.Map<GetBookingDto>(_bookingService.TGetById(id));
