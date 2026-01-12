@@ -31,6 +31,11 @@ namespace SignalR.BusinessLayer.Concrete
             return _categoryDal.GetById(id);
         }
 
+        public int TCategoryCount()
+        {
+            return _categoryDal.CategoryCount();
+        }
+
         public List<Category> TGetListAll()
         {
             return _categoryDal.GetListAll();

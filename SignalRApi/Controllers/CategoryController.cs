@@ -52,6 +52,11 @@ namespace SignalRApi.Controllers
             _categoryService.TUpdate(value);
             return Ok("Kategori Güncellendi.");
         }
-
+        [HttpGet("CategoryCount")]
+        public IActionResult CategoryCount()
+        {
+            var value = _categoryService.TCategoryCount();
+            return Ok(value);
+        }
     }
 }
