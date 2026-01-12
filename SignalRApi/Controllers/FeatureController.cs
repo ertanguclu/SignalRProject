@@ -32,7 +32,7 @@ namespace SignalRApi.Controllers
             _featureService.TAdd(value);
             return Ok("Öne Çıkan Bilgisi Eklendi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteFeature(int id)
         {
             var values = _featureService.TGetById(id);
@@ -46,7 +46,7 @@ namespace SignalRApi.Controllers
             _featureService.TUpdate(value);
             return Ok("Öne Çıkan Alan Bilgisi Güncellendi.");
         }
-        [HttpGet("GetFeature")]
+        [HttpGet("{id}")]
         public IActionResult GetFeature(int id)
         {
             var value = _mapper.Map<GetFeatureDto>(_featureService.TGetById(id));
