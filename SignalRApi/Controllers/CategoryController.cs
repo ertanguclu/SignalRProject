@@ -58,5 +58,17 @@ namespace SignalRApi.Controllers
             var value = _categoryService.TCategoryCount();
             return Ok(value);
         }
+        [HttpGet("ActiveCategoryCount")]
+        public IActionResult ActiveCategoryCount()
+        {
+            var value = _categoryService.TActiveCategoryCount();
+            return Ok(value);
+        }
+        [HttpGet("PassiveCategoryCount")]
+        public IActionResult PassiveCategoryCount()
+        {
+            var value = _categoryService.TPassiveCategoryCount();
+            return Ok(value);
+        }
     }
 }
