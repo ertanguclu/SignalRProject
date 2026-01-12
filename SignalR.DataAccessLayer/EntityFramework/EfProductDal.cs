@@ -21,5 +21,10 @@ namespace SignalR.DataAccessLayer.EntityFramework
         {
            return _context.Products.Include(p => p.Category).ToList();
         }
+
+        public int ProductCount()
+        {
+            return _context.Products.Count();
+        }
     }
 }

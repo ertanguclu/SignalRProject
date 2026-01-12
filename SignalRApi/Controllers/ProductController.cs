@@ -60,5 +60,11 @@ namespace SignalRApi.Controllers
             var value = _mapper.Map<GetProductDto>(_productService.TGetById(id));
             return Ok(value);
         }
+        [HttpGet("ProductCount")]
+        public IActionResult ProductCount()
+        {
+            var value = _productService.TProductCount();
+            return Ok(value);
+        }
     }
 }
