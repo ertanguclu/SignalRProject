@@ -78,5 +78,11 @@ namespace SignalRApi.Controllers
             var value = _productService.TProductCountByCategoryNameDrink();
             return Ok(value);
         }
+        [HttpGet("ProductPriceAvg")]
+        public IActionResult ProductPriceAvg()
+        {
+            var value = _productService.TProductPriceAvg();
+            return Ok(value);
+        }
     }
 }
