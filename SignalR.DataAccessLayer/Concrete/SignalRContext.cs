@@ -25,5 +25,6 @@ namespace SignalR.DataAccessLayer.Concrete
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<MoneyCase> MoneyCases { get; set; }
     }
 }
