@@ -15,5 +15,10 @@ namespace SignalR.DataAccessLayer.EntityFramework
             
         }
 
+        public int MenuTableCount()
+        {
+           using var context = new SignalRContext();
+            return context.MenuTables.Count();
+        }
     }
 }
