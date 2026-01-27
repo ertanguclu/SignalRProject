@@ -21,5 +21,12 @@ namespace SignalR.DataAccessLayer.EntityFramework
             var values = context.Baskets.Where(x => x.MenuTableID == id).Include(y=>y.Product).ToList();
             return values;
         }
+
+        public List<Basket> GetBasketListByMenuTableWithProductName(int id)
+        {
+            using var context = new SignalRContext();
+            var values = context.Baskets.Include(x => x.Product).Where(y => y.MenuTableID == id).ToList();
+            return values;
+        }
     }
 }
