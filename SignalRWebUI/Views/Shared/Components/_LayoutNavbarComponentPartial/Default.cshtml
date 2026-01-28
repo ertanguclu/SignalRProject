@@ -1,4 +1,32 @@
-﻿<div class="main-header">
+﻿<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+<div class="main-header">
+
+    <script type="text/javascript">
+
+        $(document).ready(()=>{
+
+            var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7161/SignalRHub").build();
+            $("#connstatus").text(connection.state);
+            connection.start().then(()=>{
+                $("#connstatus").text(connection.state);
+                setInterval(()=>{
+                    connection.invoke("SendNotification");
+                },1000);
+
+            }).catch((err)=>{
+                return console.log(err)
+            });
+
+            connection.on("ReceiveNotificationCountByFalse",(value)=>{
+                $("#notificationcountbyfalse").text(value);
+            });
+        });
+    </script>
+
     <div class="logo-header">
         <a href="index.html" class="logo">
             SignalR Admin
@@ -36,11 +64,11 @@
                 <li class="nav-item dropdown hidden-caret">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="la la-bell"></i>
-                        <span class="notification">3</span>
+                        <span class="notification" id="notificationcountbyfalse"></span>
                     </a>
                     <ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
                         <li>
-                            <div class="dropdown-title">+ Yeni Bildirim Var</div>
+                            <div class="dropdown-title">4 Yeni Bildirim Var</div>
                         </li>
                         <li>
                             <div class="notif-center">
