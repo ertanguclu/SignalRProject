@@ -15,3 +15,20 @@ connection.on("ReceiveMessage", function (user, message) {
     document.getElementById("messageslist").appendChild(li);
 
 });
+
+connection.start().then(function () {
+    document.getElementById("sendbutton").disabled = false;
+
+}).catch(function (err) {
+    return console.error(err.toString());
+});
+
+document.getElementById("sendbutton").addEventListener("click", function (event) {
+    var user = document.getElementById("userinput").value;
+    var message = document.getElementById("messageinput").value;
+    connection.invoke("SendMessage", user, message).catch(function (err) {
+        return console.error(err.toString());
+    });
+    event.preventDefault();
+});
+
