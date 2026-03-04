@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BusinessLayer.Abstract;
-using SignalR.DtoLayer.AboutDto;
+using SignalR.DtoLayer.MenuTableDto;
 using SignalR.EntityLayer.Entities;
 
 namespace SignalRApi.Controllers
@@ -11,10 +12,12 @@ namespace SignalRApi.Controllers
     public class MenuTableController : ControllerBase
     {
         private readonly IMenuTableService _menuTableService;
+        private readonly IMapper _mapper;
 
-        public MenuTableController(IMenuTableService menuTableService)
+        public MenuTableController(IMenuTableService menuTableService, IMapper mapper)
         {
             _menuTableService = menuTableService;
+            _mapper = mapper;
         }
         [HttpGet("MenuTableCount")]
         public IActionResult MenuTableCount()
@@ -25,34 +28,36 @@ namespace SignalRApi.Controllers
         [HttpGet]
         public IActionResult MenuTableList()
         {
-            var values = _mapper.Map<List<ResultAboutDto>>(_aboutService.TGetListAll());
+            var values = _mapper.Map<List<ResultMenuTableDto>>(_menuTableService.TGetListAll());
             return Ok(values);
         }
         [HttpPost]
-        public IActionResult CreateAbout(CreateAboutDto createAboutDto)
+        public IActionResult CreateMenuTable(CreateMenuTableDto createMenuTableDto)
         {
-            var value = _mapper.Map<About>(createAboutDto);
-            _aboutService.TAdd(value);
-            return Ok("Hakkında Kısmı Başarılı Bir Şekilde Eklendi.");
+            var value = _mapper.Map<MenuTable>(createMenuTableDto);
+            value.Status = false;
+            _menuTableService.TAdd(value);
+            return Ok("Masa Başarılı Bir Şekilde Eklendi.");
         }
         [HttpDelete("{id}")]
-        public IActionResult DeleteAbout(int id)
+        public IActionResult DeleteMenuTable(int id)
         {
-            var values = _aboutService.TGetById(id);
-            _aboutService.TDelete(values);
-            return Ok("Hakkında Kısmı Başarılı Bir Şekilde Silindi.");
+            var values = _menuTableService.TGetById(id);
+            _menuTableService.TDelete(values);
+            return Ok("Masa Başarılı Bir Şekilde Silindi.");
         }
         [HttpPut]
-        public IActionResult UpdateAbout(UpdateAboutDto updateAboutDto)
+        public IActionResult UpdateMenuTable(UpdateMenuTableDto updateMenuTableDto)
         {
-            var value = _mapper.Map<About>(updateAboutDto);
-            _aboutService.TUpdate(value);
-            return Ok("Hakkında Kısmı Başarılı Bir Şekilde Güncellendi.");
+            var value = _mapper.Map<MenuTable>(updateMenuTableDto);
+            value.Status = false;
+            _menuTableService.TUpdate(value);
+            return Ok("Masa Başarılı Bir Şekilde Güncellendi.");
         }
         [HttpGet("{id}")]
-        public IActionResult GetAbout(int id)
+        public IActionResult GetMenuTable(int id)
         {
-            var value = _mapper.Map<GetAboutDto>(_aboutService.TGetById(id));
+            var value = _menuTableService.TGetById(id);
             return Ok(value);
         }
     }
