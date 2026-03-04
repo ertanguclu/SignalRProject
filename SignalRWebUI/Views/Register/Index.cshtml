@@ -1,4 +1,5 @@
-﻿@{
+﻿@model RegisterDto
+@{
     Layout = null;
 }
 
@@ -6,7 +7,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Form-v6 by Colorlib</title>
+    <title>Restoran Kayıt</title>
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Font-->
@@ -20,25 +21,28 @@
             <div class="form-left">
                 <img src="~/colorlib-regform-32/images/Sauce1.jpg" alt="form" style="width:484px; height:584px">
             </div>
-            <form class="form-detail" action="#" method="post">
-                <h2>Register Form</h2>
+            <form class="form-detail" method="post">
+                <h2>Yeni Kullanıcı Kaydı</h2>
                 <div class="form-row">
-                    <input type="text" name="full-name" id="full-name" class="input-text" placeholder="Your Name" required>
+                    <input type="text" id="full-name" asp-for="Name" class="input-text" placeholder="Adınız" required>
                 </div>
                 <div class="form-row">
-                    <input type="text" name="your-email" id="your-email" class="input-text" placeholder="Email Address" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}">
+                    <input type="text" id="full-name" asp-for="Surname" class="input-text" placeholder="Soyadınız" required>
                 </div>
                 <div class="form-row">
-                    <input type="password" name="password" id="password" class="input-text" placeholder="Password" required>
+                    <input type="text" id="full-name" asp-for="Username" class="input-text" placeholder="Kullanıcı Adınız" required>
                 </div>
                 <div class="form-row">
-                    <input type="password" name="comfirm-password" id="comfirm-password" class="input-text" placeholder="Comfirm Password" required>
+                    <input type="text"  id="your-email" asp-for="Mail" class="input-text" placeholder="Email Adresiniz" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}">
+                </div>
+                <div class="form-row">
+                    <input type="password" id="password" asp-for="Password" class="input-text" placeholder="Şifreniz" required>
                 </div>
                 <div class="form-row-last">
-                    <input type="submit" name="register" class="register" value="Register">
+                    <input type="submit" name="register" class="register" value="Kayıt Ol">
                 </div>
             </form>
         </div>
     </div>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 </html>
