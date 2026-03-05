@@ -54,5 +54,17 @@ namespace SignalRApi.Controllers
             return Ok(value);
 
         }
+        [HttpGet("BookingStatusApproved/{id}")]
+        public IActionResult BookingStatusApproved(int id)
+        {
+            _bookingService.BookingStatusApproved(id);
+            return Ok("Rezervasyon Onaylandı.");
+        }
+        [HttpGet("BookingStatusCancel/{id}")]
+        public IActionResult BookingStatusCancel(int id)
+        {
+            _bookingService.BookingStatusCancelled(id);
+            return Ok("Rezervasyon İptal Edildi.");
+        }
     }
 }
