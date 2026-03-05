@@ -3,6 +3,7 @@
 	ViewData["Title"] = "Index";
 	Layout = "~/Views/AdminLayout/Index.cshtml";
 	int count = 0;
+    string status = "";
 }
 
 <div class="content">
@@ -33,13 +34,21 @@
 							<tbody>
 								@foreach (var item in Model)
 								{
+									if (item.ProductStatus == true)
+									{
+										status = "Aktif";
+									}
+									else
+									{
+										status = "Pasif";
+									}
 									count++;
 									<tr>
 										<th>@count</th>
 										<td>@item.ProductName</td>
 										<td>@item.Price</td>
 										<td>@item.CategoryName</td>
-										<td>@item.ProductStatus</td>
+										<td>@status</td>
 										<td><a href="/Product/DeleteProduct/@item.ProductID" class="btn btn-outline-danger btn-round">Sil</a></td>
 										<td><a href="/Product/UpdateProduct/@item.ProductID" class="btn btn-outline-success btn-round">Güncelle</a></td>
 									</tr>

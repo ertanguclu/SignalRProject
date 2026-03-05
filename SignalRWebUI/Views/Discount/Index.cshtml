@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+    string status = "";
 }
 
 <div class="content">
@@ -15,7 +17,7 @@
 					</div>
 					<div class="card-body">
 						<div class="card-sub">
-							 Günün indirimli ürünleri aşağıda yer almaktadır. Tema bütünlüğü için iki adet ürün seçiniz.
+							Günün indirimli ürünleri aşağıda yer almaktadır. Tema bütünlüğü için <strong>2 Adet</strong> ürün seçiniz.
 						</div>
 						<table class="table mt-3">
 							<thead>
@@ -23,21 +25,34 @@
 									<th scope="col">#</th>
 									<th scope="col">Ürün</th>
 									<th scope="col">İndirim Oranı</th>
-									<th scope="col">Durumu</th>
+									<th scope="col">Durum</th>
 									<th scope="col">Sil</th>
 									<th scope="col">Güncelle</th>
+									<th scope="col">Aktif Yap</th>
+									<th scope="col">Pasif Yap</th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach (var item in Model)
 								{
+									if(item.Status == true)
+									{
+										status = "Aktif";
+									}
+									else
+									{
+										status = "Pasif";
+                                    }
+									count++;
 									<tr>
-										<td>@item.DiscountID</td>
+										<th>@count</th>
 										<td>@item.Title</td>
 										<td>@item.Amount</td>
-										<td><a href="/Discount/DeleteDiscount/@item.DiscountID" class="btn btn-outline-warning btn-round">Durum</a></td>
+                                        <td>@status</td>
 										<td><a href="/Discount/DeleteDiscount/@item.DiscountID" class="btn btn-outline-danger btn-round">Sil</a></td>
 										<td><a href="/Discount/UpdateDiscount/@item.DiscountID" class="btn btn-outline-success btn-round">Güncelle</a></td>
+										<td><a href="/Discount/ChangeStatusToTrue/@item.DiscountID" class="btn btn-outline-warning btn-round">Aktif Yap</a></td>
+										<td><a href="/Discount/ChangeStatusToFalse/@item.DiscountID" class="btn btn-outline-success btn-round">Pasif Yap</a></td>
 									</tr>
 								}
 							</tbody>
