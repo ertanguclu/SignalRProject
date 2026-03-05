@@ -67,5 +67,11 @@ namespace SignalRApi.Controllers
             _discountService.TChangeStatusToFalse(id);
             return Ok("İndirim Durumu Başarılı Bir Şekilde Pasif Edildi.");
         }
+        [HttpGet("GetListByStatusTrue")]
+        public IActionResult GetListByStatusTrue()
+        {
+            var values = _mapper.Map<List<ResultDiscountDto>>(_discountService.TGetListByStatusTrue());
+            return Ok(values);
+        }
     }
 }
