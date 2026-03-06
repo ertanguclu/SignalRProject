@@ -1,11 +1,40 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using SignalRWebUI.Dtos.MessageDtos;
+using System.Text;
 
 namespace SignalRWebUI.Controllers
 {
     public class DefaultController : Controller
     {
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public DefaultController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
+        }
+
         public IActionResult Index()
         {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult SendMessage()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+        public IActionResult SendMessage(CreateMessageDto createMessageDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createMessageDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = client.PostAsync("https://localhost:7161/api/Message", stringContent);
+            if (responseMessage.Result.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
             return View();
         }
     }

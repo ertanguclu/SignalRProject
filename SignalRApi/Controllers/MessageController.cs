@@ -30,6 +30,7 @@ namespace SignalRApi.Controllers
         [HttpPost]
         public IActionResult CreateMessage(CreateMessageDto createMessageDto)
         {
+            createMessageDto.Status = false;
             var value = _mapper.Map<Message>(createMessageDto);
             _messageService.TAdd(value);
             return Ok("Mesaj Başarılı Bir Şekilde Gönderildi.");
