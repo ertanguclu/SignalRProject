@@ -8,11 +8,11 @@ namespace SignalRWebUI.Controllers
     public class QRCodeController : Controller
     {
         [HttpGet]
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
-
         [HttpPost]
         public IActionResult Index(string value)
         {
