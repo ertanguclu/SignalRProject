@@ -23,7 +23,7 @@ namespace SignalRWebUI.Controllers
                 using (Bitmap image = squareCode.GetGraphic(10))
                 {
                     image.Save(memoryStream, ImageFormat.Png);
-                    ViewBag.QrCodeImage = "data:image/png;base64" + Convert.ToBase64String(memoryStream.ToArray());
+                    ViewBag.QrCodeImage = "data:image/png;base64," + Convert.ToBase64String(memoryStream.ToArray());
                 }
             }
             return View();
