@@ -1,4 +1,5 @@
 ﻿
+
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
@@ -18,7 +19,7 @@ namespace SignalRWebUI.Controllers
         {
             MimeMessage mimeMessage = new MimeMessage();
 
-            MailboxAddress mailboxAddressFrom = new MailboxAddress("E&R Rezervasyon", "mail adresi");
+            MailboxAddress mailboxAddressFrom = new MailboxAddress("E&R Restoran", "ertanguclu773@gmail.com");
             mimeMessage.From.Add(mailboxAddressFrom);
 
             MailboxAddress mailboxAddressTo = new MailboxAddress("User", createMailDto.ReceiverMail);
@@ -32,7 +33,7 @@ namespace SignalRWebUI.Controllers
 
             SmtpClient client = new SmtpClient();
             client.Connect("smtp.gmail.com", 587, false);
-            client.Authenticate("mail adresi", "key");
+            client.Authenticate("ertanguclu773@gmail.com", "ascd oveu jevm zevw");
 
             client.Send(mimeMessage);
             client.Disconnect(true);
