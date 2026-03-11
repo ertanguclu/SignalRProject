@@ -28,6 +28,7 @@ namespace SignalRApi.Controllers
         [HttpPost]
         public IActionResult CreateCategory(CreateCategoryDto createCategoryDto)
         {
+            createCategoryDto.Status = true;
             var value = _mapper.Map<Category>(createCategoryDto);
             _categoryService.TAdd(value);
             return Ok("Kategori Eklendi.");

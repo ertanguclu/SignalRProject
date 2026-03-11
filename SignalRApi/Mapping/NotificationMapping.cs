@@ -11,6 +11,7 @@ namespace SignalRApi.Mapping
             CreateMap<CreateNotificationDto, Notification>().ReverseMap();
             CreateMap<Notification, ResultNotificationDto>().ReverseMap();
             CreateMap<Notification, UpdateNotificationDto>().ReverseMap();
+            CreateMap<Notification, GetNotificationDto>().ReverseMap();
         }
     }
 }
