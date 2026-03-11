@@ -102,5 +102,23 @@ namespace SignalRApi.Controllers
             var value = _productService.TProductAvgPriceByHamburger();
             return Ok(value);
         }
+        [HttpGet("ProductPriceBySteakBurger")]
+        public IActionResult ProductPriceBySteakBurger()
+        {
+            var value = _productService.TProductPriceBySteakBurger();
+            return Ok(value);
+        }
+        [HttpGet("TotalPriceByDrinkCategory")]
+        public IActionResult TotalPriceByDrinkCategory()
+        {
+            var value = _productService.TTotalPriceByDrinkCategory();
+            return Ok(value);
+        }
+        [HttpGet("TotalPriceBySaladCategory")]
+        public IActionResult TotalPriceBySaladCategory()
+        {
+            var value = _productService.TTotalPriceBySaladCategory();
+            return Ok(value);
+        }
     }
 }
