@@ -33,7 +33,7 @@ namespace SignalRWebUI.Controllers
 
             SmtpClient client = new SmtpClient();
             client.Connect("smtp.gmail.com", 587, false);
-            client.Authenticate("ertanguclu773@gmail.com", "ascd oveu jevm zevw");
+            client.Authenticate("ertanguclu773@gmail.com", "ascd oveu jevm zevw www");
 
             client.Send(mimeMessage);
             client.Disconnect(true);
